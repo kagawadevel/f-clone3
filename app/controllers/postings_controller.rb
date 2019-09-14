@@ -14,7 +14,11 @@ class PostingsController < ApplicationController
 
   # GET /postings/new
   def new
-    @posting = Posting.new
+    if params[:back]
+      @posting = Posting.new(posting_params)
+    else
+      @posting = Posting.new
+    end
   end
 
   # GET /postings/1/edit
@@ -61,6 +65,10 @@ class PostingsController < ApplicationController
     end
   end
 
+  def confirm
+      @posting = Posting.new(posting_params)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_posting
@@ -69,6 +77,6 @@ class PostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def posting_params
-      params.require(:posting).permit(:title, :content, :image, :iamge_cache)
+      params.require(:posting).permit(:title, :content, :image, :image_cache)
     end
 end

@@ -1,0 +1,11 @@
+<h1>確認画面</h1>
+<%= form_with(model: @posting, url:postings_path, local: true) do |form| %>
+  <%= image_tag(@posting.image.url) if @posting.image && @posting.image.url %>
+  <%= form.hidden_field :image_cache %><br>
+  <%= form.submit '投稿します！'%>
+<% end %>
+
+<%= form_with( model: @posting ,url: new_posting_path, local: true, method: "get" ) do |form| %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>
