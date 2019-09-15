@@ -1,7 +1,15 @@
 <h1>確認画面</h1>
 <%= form_with(model: @posting, url:postings_path, local: true) do |form| %>
-  <%= image_tag(@posting.image.url) if @posting.image && @posting.image.url %>
+
+  <p>タイトル：<%= @posting.title %></p>
+  <%= form.hidden_field :title%>
+
+  <p>内容：<%= @posting.content %></p>
+  <%= form.hidden_field :content %>
+
+  <p>画像：<%= image_tag(@posting.image.url) if @posting.image && @posting.image.url %></p>
   <%= form.hidden_field :image_cache %><br>
+
   <%= form.submit '投稿します！'%>
 <% end %>
 
