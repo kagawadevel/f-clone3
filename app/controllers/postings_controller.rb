@@ -67,6 +67,7 @@ class PostingsController < ApplicationController
 
   def confirm
       @posting = Posting.new(posting_params)
+      render "new" if @posting.invalid?
   end
 
   private
