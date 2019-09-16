@@ -18,6 +18,7 @@
       <%= link_to "マイページ", user_path(current_user.id) %>
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
       <%= link_to "投稿一覧ページ", postings_path %>
+      <%= link_to "新規投稿", new_posting_path %>
       <p><%= current_user.name %>としてログインしています</p>
     <% else %>
       <%= link_to "新規アカウント作成", new_user_path %>
