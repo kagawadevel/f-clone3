@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Postings</h1>
+<h1>投稿一覧ページ</h1>
 
 <table>
   <thead>
@@ -18,7 +18,11 @@
       <tr>
         <td><%= posting.title %></td>
         <td><%= posting.content %></td>
-        <td><%= image_tag posting.image.url %></td>
+        <% if posting.image.present? %>
+          <td><%= image_tag posting.image.url, :size => '100px×100px' %></td>
+        <% else %>
+          <td><p>画像はありません</p></td>
+        <% end %>
         <td><%= posting.user.name %></td>
         <td><%= link_to '詳細を確認する', posting %></td>
         <% if posting.user.name == current_user.name %>
@@ -32,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Posting', new_posting_path %>
+<%= link_to '新規投稿', new_posting_path %>

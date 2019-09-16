@@ -4,5 +4,10 @@
   "dependencies": {
     "bootstrap": "3",
     "jquery": "^3.4.1"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kagawadevel/f-clone3.git",
+  "author": "kakegawa <cmuwni@gmail.com>",
+  "license": "MIT"
 }
