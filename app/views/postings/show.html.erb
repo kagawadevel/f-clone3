@@ -10,10 +10,12 @@
   <%= @posting.content %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @posting.image.url %>
-</p>
+ <% if @posting.image.present? %>
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag @posting.image.url %>
+  </p>
+ <% end %>
 
-<%= link_to 'Edit', edit_posting_path(@posting) %> |
+<%= link_to 'Edit', edit_posting_path(@posting) %>
 <%= link_to 'Back', postings_path %>

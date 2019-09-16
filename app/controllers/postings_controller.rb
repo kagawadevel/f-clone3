@@ -29,6 +29,7 @@ class PostingsController < ApplicationController
   # POST /postings.json
   def create
     @posting = Posting.new(posting_params)
+    @posting.user_id = current_user.id
 
     respond_to do |format|
       if @posting.save
@@ -67,6 +68,7 @@ class PostingsController < ApplicationController
 
   def confirm
       @posting = Posting.new(posting_params)
+      @posting.user_id = current_user.id
       render "new" if @posting.invalid?
   end
 
