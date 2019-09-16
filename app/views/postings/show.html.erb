@@ -1,18 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
-  <strong>Title:</strong>
+      <strong>投稿者：</strong>
+      <%= @posting.user.name %></p>
+</p>
+
+<p>
+  <strong>タイトル:</strong>
   <%= @posting.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>本文:</strong>
   <%= @posting.content %>
 </p>
 
  <% if @posting.image.present? %>
   <p>
-    <strong>Image:</strong>
+    <strong>画像:</strong>
     <%= image_tag @posting.image.url %>
   </p>
  <% end %>

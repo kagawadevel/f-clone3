@@ -18,7 +18,7 @@
       <tr>
         <td><%= posting.title %></td>
         <td><%= posting.content %></td>
-        <td><%= posting.image %></td>
+        <td><%= image_tag posting.image.url %></td>
         <td><%= posting.user.name %></td>
         <td><%= link_to '詳細を確認する', posting %></td>
         <% if posting.user.name == current_user.name %>
