@@ -2,38 +2,38 @@
 
 <h1>投稿一覧ページ</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>本文</th>
-      <th>画像</th>
-      <th>投稿者</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @postings.each do |posting| %>
+<section class="bg-light py-5">
+<div class="conteiner">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= posting.title %></td>
-        <td><%= posting.content %></td>
-        <% if posting.image.present? %>
-          <td><%= image_tag posting.image.url, :size => '100px×100px' %></td>
-        <% else %>
-          <td><p>画像はありません</p></td>
-        <% end %>
-        <td><%= posting.user.name %></td>
-        <td><%= link_to '詳細を確認する', posting %></td>
-        <% if posting.user.name == current_user.name %>
-          <td><%= link_to '編集する', edit_posting_path(posting) %></td>
-          <td><%= link_to '削除する', posting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
+        <th class="col-md-2">タイトル</th>
+        <th class="col-md-4">本文</th>
+        <th class="col-md-5">画像</th>
+        <th class="col-md-1">投稿者</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to '新規投稿', new_posting_path %>
+    <tbody>
+      <% @postings.each do |posting| %>
+        <tr class="row">
+          <td class="col-md-2"><%= posting.title %></td>
+          <td class="col-md-4"><%= posting.content %></td>
+          <% if posting.image.present? %>
+            <td class="col-md-5"><%= image_tag posting.image.url, :size => '100px×100px' %></td>
+          <% else %>
+            <td class="col-md-5"><p>画像はありません</p></td>
+          <% end %>
+            <td class="col-md-1"><%= posting.user.name %></td>
+            <td class="col-md-1"><%= link_to '詳細', posting %></td>
+          <% if posting.user.name == current_user.name %>
+            <td class="col-md-1"><%= link_to '編集', edit_posting_path(posting) %></td>
+            <td class="col-md-1"><%= link_to '削除', posting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</section>

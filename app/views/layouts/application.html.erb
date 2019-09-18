@@ -13,18 +13,46 @@
     <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
+  <div class="container">
 
     <% if logged_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-      <%= link_to "投稿一覧ページ", postings_path %>
-      <%= link_to "新規投稿", new_posting_path %>
-      <p><%= current_user.name %>としてログインしています</p>
+    <header>
+      <div class="container"
+        <nav class="navbar navbarexpand navbae-light">
+          <ul class="navbar-nav">
+            <li class="nav-item"><%= link_to "マイページ", user_path(current_user.id) %></li>
+            <li class="nav-item"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+            <li class="nav-item"><%= link_to "投稿一覧ページ", postings_path %></li>
+            <li class="nav-item"><%= link_to "新規投稿", new_posting_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <% else %>
-      <%= link_to "新規アカウント作成", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
+    <header>
+      <div class="container">
+        <nav class="navbar navbarexpand navbae-light">
+          <ul class="navbar-nav">
+            <li class="nav-item"><%= link_to "新規アカウント作成", new_user_path %></li>
+            <li class="nav-item"><%= link_to "ログイン", new_session_path %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <% end %>
+
+    <% if current_user.present? %>
+      <div class="login_name">
+        <p><%= current_user.name %>としてログインしています</p>
+      </div>
     <% end %>
 
     <%= yield %>
+
+    <footer class="text-center text-muted py-4">
+      Copyright XXX.com
+    </footer>
+
+  </div>
   </body>
 </html>
