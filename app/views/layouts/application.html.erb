@@ -43,14 +43,14 @@
 
     <% if current_user.present? %>
       <div class="login_name">
-        <p><%= current_user.name %>としてログインしています</p>
+        <p><strong><%= current_user.name %></strong>としてログインしています</p>
       </div>
     <% end %>
 
     <%= yield %>
 
-    <footer class="text-center text-muted py-4">
-      Copyright XXX.com
+    <footer class="footer">
+        <p class="text-muted">Copyright XXX.com</p>
     </footer>
 
   </div>
