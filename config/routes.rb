@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'sessions#new'
+
   resources :postings do
     collection do
       post :confirm
